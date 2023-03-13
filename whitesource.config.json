@@ -1,0 +1,12 @@
+{
+  "apiKey" : "efce8a5569f74c80a7205416a2b96bfa9cc5ece3df9640c38ad3c38018efae76",
+  "checkPolicies" : "true",
+  "productName" : "entervo.infinite",
+  "productVer":" ",
+  "projectName" : "[SEARCH]-search-gui",
+  "devDep": false,
+  "baseURL": "app-eu.whitesourcesoftware.com",
+  "https" : "true",
+  "forceUpdate" : "true",
+  "debugMode" : "true"
+}

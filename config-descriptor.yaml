@@ -1,0 +1,18 @@
+syntaxVersion: '0.5'
+name: search-gui
+maintainer: Cloud services 2
+description: Frontend application for SEARCH backend service
+scope: SERVICE
+version: 0.0.0
+service:
+  name: search-gui
+  systems:
+    - entervo-infinite
+configItems:
+  - key: mock.property
+    doc: ignore this property
+    type: STRING
+    pattern: .*
+    defaultValue: do_not_change
+    nature: MUTABLE_TENANT
+    onChange: Should not be changed
