@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+//@import "~bos30-components-primeng/src/styles/sb_theming";
+
+@import "assets/styles/colors";
+@import "~bos30-components-primeng/src/styles/component_theming";
+@import "~bos30-components-primeng/src/styles/components/sb-button-theme";
+@import "assets/styles/sb-multiselect-theme";
+
+// Overwrite colors
+$sb-color-key-teal:         $sb-color-key-parking;
+$sb-color-key-teal-72:      $sb-color-key-parking-72;
+$sb-color-key-teal-32:      $sb-color-key-parking-32;
+$sb-color-key-teal-16:      $sb-color-key-parking-16;
+
+@include sb-frs-components-theme();
+@include sb-multiselect-component-theme();

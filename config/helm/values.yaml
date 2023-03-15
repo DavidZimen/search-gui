@@ -1,0 +1,18 @@
+replicaCount: 1
+image:
+  repository: '...'
+  tag: 0.0.1-SNAPSHOT
+  pullPolicy: Always
+service:
+  type: NodePort
+  port: 8080
+  targetPort: 8080
+  nodePort: 30099
+hostAlias:
+  enabled: false
+  hostname: '...'
+  ip: '...'
+cminstance: ''
+cmtentants: ''
+searchServiceUrl: ''
+opaUrl: ''

@@ -1,0 +1,6 @@
+@use "sass:color";
+$sb-color-key-parking: #fdc300;
+$sb-color-key-parking-72: color.adjust($sb-color-key-parking, $alpha: -0.28); // Key color that is used for design accents, highlights, emphasizing features and for control states 72% opacity
+$sb-color-key-parking-32: color.adjust($sb-color-key-parking, $alpha: -0.68); // Key color that is used for design accents, highlights, emphasizing features and for control states 32% opacity
+$sb-color-key-parking-16: color.adjust($sb-color-key-parking, $alpha: -0.84); // Key color that is used for design accents, highlights, emphasizing features and for control states 16% opacity
+$sb-color-white:            #ffffff;

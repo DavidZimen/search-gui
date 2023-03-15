@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pam-gui
+  labels:
+    app: pam-gui
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: pam-gui
+  template:
+    metadata:
+      labels:
+        app: pam-gui
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      containers:
+        - name: pam-gui
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: "/var/cache/nginx/"
+              name: nginx-cache
+              readOnly: false
+            - mountPath: "/var/run/"
+              name: nginx-run
+              readOnly: false
+            - mountPath: "/usr/share/nginx/html/assets/system-environment/"
+              name: assets-system-environment
+              readOnly: false
+          env:
+            - name: PAM_SERVICE_URL
+              value: "{{ .Values.searchServiceUrl}}"
+            - name: OPA_URL
+              value: "{{ .Values.opaUrl}}"
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            runAsNonRoot: true
+            runAsUser: 101
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+          readinessProbe:
+            httpGet:
+              path: /ready-check
+              port: 8080
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health-check
+              port: 8080
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /health-check
+              port: 8080
+            failureThreshold: 30
+            periodSeconds: 10
+          resources:
+            limits:
+              memory: 16Mi
+              cpu: 500m
+            requests:
+              memory: 16Mi
+              cpu: 500m
+      volumes:
+        - name: nginx-cache # These are required to run nginx in read-only container
+          emptyDir: { }
+        - name: nginx-run
+          emptyDir: { }
+        - name: assets-system-environment # This volume is required to load environment variables to a file in read-only container
+          emptyDir: { }
+

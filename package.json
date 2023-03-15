@@ -25,6 +25,7 @@
     "@rsql/builder": "^1.2.4",
     "@rsql/emitter": "^1.2.4",
     "@rsql/parser": "^1.2.4",
+    "bos30-components-primeng": "0.0.257",
     "chart.js": "^3.7.1",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.2",

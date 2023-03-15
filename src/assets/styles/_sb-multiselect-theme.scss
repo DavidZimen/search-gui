@@ -1,0 +1,121 @@
+@import "~bos30-components-primeng/src/styles/components/sb-button-theme";
+
+@mixin sb-multiselect-component-theme() {
+
+    .p-multiselect {
+        min-width: 8rem;
+        width: 100%;
+        border-radius: 0;
+        padding: 0 0.5rem;
+        @include button-normal;
+        @include sb-font-text-regular;
+        min-height: 34px;
+
+        &:not(.p-disabled) {
+            &.p-focus {
+                @include focus;
+                box-shadow: unset;
+            }
+
+            &:focus {
+                @include focus;
+                box-shadow: unset;
+            }
+            &:focus-within {
+                @include focus;
+                box-shadow: unset;
+            }
+
+            &:hover:not(:focus) {
+                @include button-mouseover;
+                @include sb-font-text-regular;
+                @include sb-drop-shadow;
+            }
+
+            &:active {
+                @include button-pressed;
+                @include sb-font-text-regular;
+            }
+        }
+
+        &.p-multiselect-open {
+            .pi-chevron-down:before {
+                content: "\e903";
+            }
+        }
+
+        .p-multiselect-label {
+            display: flex;
+            align-items: center;
+            box-shadow: unset;
+            padding: 0;
+        }
+
+        .p-multiselect-trigger {
+            width: unset;
+        }
+    }
+
+    .p-multiselect-panel {
+        @include sb-border-standard;
+        @include sb-drop-shadow;
+
+        .p-multiselect-items .p-multiselect-item {
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem;
+            height: 2rem;
+
+            background-color: $sb-color-white;
+            @include sb-font-text-regular;
+            color: $sb-color-comet;
+
+            &:not(.p-highlight):not(.p-disabled):hover {
+                background-color: $sb-color-key-teal-16;
+                @include sb-font-text-regular;
+                color: $sb-color-key-darkgrey;
+            }
+
+            &.p-highlight {
+                background-color: $sb-color-key-teal-16;
+                @include sb-border-select(border-left);
+                @include sb-font-text-semibold;
+                color: $sb-color-key-darkgrey;
+            }
+        }
+    }
+
+    p-multiselect.ng-dirty.ng-invalid > .p-multiselect,
+    p-multiselect.ng-touched.ng-invalid > .p-multiselect {
+
+        &:hover:enabled {
+            @include button-mouseover;
+            @include sb-border-error;
+        }
+
+        &:hover:not(.p-disabled) {
+            @include button-mouseover;
+            @include sb-border-error;
+        }
+
+        &.p-focus {
+            @include focus;
+            @include sb-border-error;
+        }
+
+        &:focus:enabled {
+            @include focus;
+            @include sb-border-error;
+        }
+
+        &:not(:hover):not(:focus) {
+            border-color: $sb-color-silver;
+            @include sb-border-error;
+        }
+    }
+
+    p-multiselect.ng-touched.ng-invalid > .p-multiselect:not(:hover):not(:focus):focus-within {
+        @include focus;
+        @include sb-border-error;
+    }
+}
