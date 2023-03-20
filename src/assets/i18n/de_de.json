@@ -1,0 +1,17 @@
+{
+  "general": {
+    "savedSuccessfully": "Speichern erfolgreich",
+    "updatedSuccessfully": "Aktualisieren erfolgreich",
+    "errorWhileSaving": "Beim Speichern ist ein Fehler aufgetreten.",
+    "errorWhileRemoving": "Beim Entfernen ist ein Fehler aufgetreten.",
+    "errorWhileUpdating": "Beim Aktualisieren ist ein Fehler aufgetreten.",
+    "valueNotValid": "Ungültige(r) Wert(e). Bitte korrigieren Sie Ihre Eingaben.",
+    "unexpectedError": "Unerwarteter Fehler. Bitte versuchen Sie es später erneut.",
+    "removedSuccessfully": "Erfolgreich entfernt.",
+    "wantDeleted": "~Möchten Sie das Produkt wirklich löschen",
+    "requiredFieldsEmpty": "Alle Pflichtfelder müssen ausgefüllt werden.",
+    "unexpectedRestError": "Unerwarteter REST-Fehler. Bitte versuchen Sie es später erneut.",
+    "yesButton": "Ja",
+    "noButton": "Nein"
+  }
+}

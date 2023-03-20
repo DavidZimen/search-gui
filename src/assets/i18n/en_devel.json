@@ -1,0 +1,19 @@
+{
+  "general": {
+    "savedSuccessfully": "~Saved successfully",
+    "updatedSuccessfully": "~Updated successfully",
+    "removedSuccessfully": "~Deleted successfully",
+    "errorWhileSaving": "~An error occurred while saving",
+    "errorWhileRemoving": "~An error occurred while removing.",
+    "errorWhileUpdating": "~An error occurred while updating",
+    "requiredFieldsEmpty": "~Required field is empty",
+    "valueNotValid": "~Value not valid",
+    "unexpectedError": "~Unexpected error",
+    "unexpectedRestError": "~Unexpected REST error",
+    "yesButton": "~Yes",
+    "noButton": "~No",
+    "noPermissionForSearchHeader": "~Access denied",
+    "noPermissionForSearch": "~You don't have the required permission for this app!",
+    "search:": "~Search..."
+  }
+}

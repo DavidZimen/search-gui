@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'http://localhost:8080/',
+  searchServicePath: '',
+  opaUrl: 'http://localhost:8080/',
+  mockPm: true,
+  mockPmTenant: "tenant1",
+  mockPmUserRoles: ["ROLE_DEVELOPER"],
+  mockPmUserLocale: "en",
+  mockOpa: true
 };
 
 /*

@@ -14,3 +14,8 @@ $sb-color-key-teal-16:      $sb-color-key-parking-16;
 
 @include sb-frs-components-theme();
 @include sb-multiselect-component-theme();
+
+.saveBtn {
+  float: right;
+  transform: translateY(35%);
+}

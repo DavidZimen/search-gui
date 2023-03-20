@@ -1,0 +1,17 @@
+{
+  "general": {
+    "savedSuccessfully": "Saved successfully",
+    "updatedSuccessfully": "Updated successfully",
+    "errorWhileSaving": "An error occurred while saving.",
+    "errorWhileRemoving": "An error occurred while removing.",
+    "errorWhileUpdating": "An error occurred while updating.",
+    "requiredFieldsEmpty": "Required fields must be filled in.",
+    "valueNotValid": "Invalid value(s). Please enter the correct data.",
+    "unexpectedError": "Unexpected error. Please try again later.",
+    "removedSuccessfully": "Removed successfully",
+    "wantDeleted": "~Are you sure to delete product?",
+    "unexpectedRestError": "Unexpected REST error. Please try again later.",
+    "yesButton": "Yes",
+    "noButton": "No"
+  }
+}
