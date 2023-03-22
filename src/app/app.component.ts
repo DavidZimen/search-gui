@@ -7,6 +7,10 @@ import {UserService} from "./service/user.service";
 import {PermissionService} from "./service/permission.service";
 import {environment} from "../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
+import {SearchHistoryItem} from "./dto/search-history-item";
+import {SearchHistoryService} from "./service/search-history.service";
+import {SearchService} from "./service/search.service";
+import {SearchResult} from "./dto/search-result";
 
 @Component({
   selector: 'app-root',
@@ -19,13 +23,19 @@ export class AppComponent implements OnInit, OnDestroy {
   messages: Message[] = [];
   messageSubscription: Subscription;
   hasPermissions: boolean = true;
+  searchHistoryItems: SearchHistoryItem[] = [];
+  searchHistorySubscription: Subscription;
+  searchResults: SearchResult[] = [];
+  query: string;
 
   constructor(
     private messageService: MessagesService,
     private languageService: LanguageService,
     private translateService: TranslateService,
     private userService: UserService,
-    private permissionService: PermissionService
+    private permissionService: PermissionService,
+    private searchHistoryService: SearchHistoryService,
+    private searchService: SearchService
   ) {
 
   }
@@ -44,6 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.subscribeToMessageNotifications();
     this.loadLanguage();
+    this.subscribeToSearchHistory();
   }
 
   ngOnDestroy(): void {
@@ -76,6 +87,19 @@ export class AppComponent implements OnInit, OnDestroy {
     } else {
       this.translateService.use(this.languageService.EN_GB);
     }
+  }
+
+  private subscribeToSearchHistory(): void {
+    this.searchHistoryService.loadSearchHistoryItems();
+    this.searchHistorySubscription = this.searchHistoryService.searchHistoryItems$.subscribe({
+      next: items => this.searchHistoryItems = items
+    })
+  }
+
+  public async search() {
+    this.searchService.search(this.query)
+      .toPromise()
+      .then(results => this.searchResults = results);
   }
 
   showToast(): void {

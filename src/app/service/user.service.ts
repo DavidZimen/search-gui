@@ -9,6 +9,7 @@ export class UserService {
     private USER_LOCAL_STORAGE_NAME = "user";
     private CURRENT_LOCALE_LOCAL_STORAGE_NAME = "currentLocale";
 
+    userName: string;
     roles: string[];
     locale: string;
 
@@ -16,18 +17,19 @@ export class UserService {
       if (environment.mockPm) {
         this.roles = environment.mockPmUserRoles;
         this.locale = environment.mockPmUserLocale;
+        this.userName = environment.mockPmUser;
       } else {
-        this.loadRoles();
+        this.loadUserWithRoles();
         this.loadLocale();
       }
     }
 
-    public loadRoles(): void {
+    public loadUserWithRoles(): void {
       let userString = localStorage.getItem(this.USER_LOCAL_STORAGE_NAME);
       if (userString != null) {
         let user = JSON.parse(userString) as User;
         this.roles = JSON.parse(user.roles);
-        this.locale = user.locale;
+        this.userName = user.username;
       }
     }
 

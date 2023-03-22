@@ -9,6 +9,7 @@ export const environment = {
   opaUrl: 'http://localhost:8080/',
   mockPm: true,
   mockPmTenant: "tenant1",
+  mockPmUser: "Dusike",
   mockPmUserRoles: ["ROLE_DEVELOPER"],
   mockPmUserLocale: "en",
   mockOpa: true

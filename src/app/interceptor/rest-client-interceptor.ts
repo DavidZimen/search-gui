@@ -12,26 +12,35 @@ import {environment} from "../../environments/environment";
 import {TenantService} from "../service/tenant.service";
 import {catchError} from "rxjs/operators";
 import {MessagesService} from "../service/messages.service";
+import {UserService} from "../service/user.service";
 
 @Injectable()
 export class RestClientInterceptor implements HttpInterceptor {
 
   baseUrl = environment.baseUrl;
-  pamServicePath = environment.searchServicePath;
+  searchServicePath = environment.searchServicePath;
 
-  constructor(private tenantService: TenantService, private http: HttpClient, private messageService: MessagesService) {
+  constructor(
+    private tenantService: TenantService,
+    private http: HttpClient,
+    private messageService: MessagesService,
+    private userService: UserService
+  ) {
     if (!this.baseUrl.endsWith("/")) {
       this.baseUrl = this.baseUrl + "/";
     }
-    if (this.pamServicePath.length > 0 && !this.pamServicePath.endsWith("/")) {
-      this.pamServicePath = this.pamServicePath + "/";
+    if (this.searchServicePath.length > 0 && !this.searchServicePath.endsWith("/")) {
+      this.searchServicePath = this.searchServicePath + "/";
     }
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // if loaded assets, go to original URL
     if (!req.url.includes("assets") && !req.url.includes("v1/data/com/scheidtbachmann/phfa/iam/allow")) {
-      req = req.clone({url: `${this.baseUrl}${this.pamServicePath}v1/${this.tenantService.tenant}/${req.url}`});
+      req = req.clone({
+        url: `${this.baseUrl}${this.searchServicePath}v1/${this.tenantService.tenant}/${req.url}`,
+        setParams: { userName: this.userService.userName }
+      });
     }
 
     return next.handle(req).pipe(
@@ -40,13 +49,7 @@ export class RestClientInterceptor implements HttpInterceptor {
         let errorMsg = '';
         let errorMsgLocalized = 'general.unexpectedRestError';
 
-        if (error.error.message.startsWith('E1:')) {
-          errorMsg = `Error: ${error.error.message}`;
-          errorMsgLocalized = 'productGroup.singleFacilitySaleError';
-        } else if (error.error.message.startsWith('E2:')) {
-          errorMsg = `Error: ${error.error.message}`;
-          errorMsgLocalized = 'product.singleFacilitySaleError';
-        } else if (error.error instanceof ErrorEvent) {
+        if (error.error instanceof ErrorEvent) {
           console.error('This is client side error');
           errorMsg = `Error: ${error.error.message}`;
         } else {

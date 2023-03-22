@@ -18,6 +18,8 @@ import {ButtonModule} from "primeng/button";
 import {ErrorHandlerService} from "./service/error-handler.service";
 import {MessageService} from "primeng/api";
 import {InputTextModule} from "primeng/inputtext";
+import {AutoCompleteModule} from "primeng/autocomplete";
+import {CardModule} from "primeng/card";
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   let prefix = "/assets/i18n/";
@@ -49,7 +51,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ToastModule,
     DialogModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    AutoCompleteModule,
+    CardModule
   ],
   providers: [
     {

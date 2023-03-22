@@ -21,6 +21,7 @@ export const environment = {
   opaUrl: readEnvironmentVariable('opaUrl', 'https://kong.dev.parking.scheidt-bachmann.net/open-policy-agent/'),
   mockPm: false,
   mockPmTenant: "not used, mock pm should be false",
+  mockPmUser: "not used, mock pm should be false",
   mockPmUserRoles: ["not used, mock pm should be false"],
   mockPmUserLocale: "not used, mock pm should be false",
   mockOpa: false
