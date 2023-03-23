@@ -10,9 +10,11 @@ export class FilterComponent implements OnInit {
   @Input()
   filterOptions: string[];
 
+  @Input()
+  buttonDisabled: boolean;
+
   dropdownOptions: string[] = [];
   tableOptions: string[] = [];
-
   display: boolean = false;
 
   constructor() { }

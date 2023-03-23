@@ -9,7 +9,7 @@ import {SearchResult} from "../../dto/search-result";
 export class SearchResultsComponent implements OnInit {
 
   @Input()
-  searchResults: SearchResult[];
+  searchResults: SearchResult[] = [];
 
   constructor() { }
 

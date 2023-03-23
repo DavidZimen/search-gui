@@ -8,6 +8,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import {ButtonModule} from "primeng/button";
 import {CardModule} from "primeng/card";
 import {FilterModule} from "../filter/filter.module";
+import {TableModule} from "primeng/table";
 
 
 
@@ -23,7 +24,8 @@ import {FilterModule} from "../filter/filter.module";
     TranslateModule,
     ButtonModule,
     CardModule,
-    FilterModule
+    FilterModule,
+    TableModule
   ],
   exports: [
     SearchBarComponent,

@@ -1,5 +1,6 @@
 <p-button
   (click)="display = true"
+  [disabled]="buttonDisabled"
   label="{{ 'general.filter' | translate }}"
   icon="pi pi-filter"
   iconPos="left">

@@ -1,9 +1,19 @@
-<div *ngFor="let result of searchResults">
-  <p-card>
+<div class="table-wrapper">
+  <p-table [value]="searchResults">
     <ng-template pTemplate="header">
-      <h4>{{result.name}}</h4>
+      <tr>
+        <th>Result</th>
+        <th>Result Type</th>
+        <th>Result local Id</th>
+      </tr>
     </ng-template>
-    <h6>{{result.resultType}}</h6>
-    <p>{{result.resultLocalId}}</p>
-  </p-card>
+
+    <ng-template pTemplate="body" let-searchResult>
+      <tr>
+        <th>{{searchResult.name}}</th>
+        <th>{{searchResult.resultType}}</th>
+        <th>{{searchResult.resultLocalId}}</th>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>

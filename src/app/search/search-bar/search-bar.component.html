@@ -18,9 +18,12 @@
       </div>
     </div>
 
-    <div *ngIf="filterEnabled" class="col col-2">
+    <div class="col col-2">
       <div class="flex justify-content-end">
-        <app-filter [filterOptions]="resultTypes"></app-filter>
+        <app-filter
+          [buttonDisabled]="!filterEnabled"
+          [filterOptions]="resultTypes">
+        </app-filter>
       </div>
     </div>
 

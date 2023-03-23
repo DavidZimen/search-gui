@@ -26,3 +26,11 @@ $sb-color-key-teal-16:      $sb-color-key-parking-16;
   float: right;
   transform: translateY(35%);
 }
+
+.table-wrapper {
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #ffffff;
+  background: var(--sb-color-white);
+}
