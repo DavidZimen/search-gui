@@ -9,8 +9,6 @@ import {environment} from "../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
 import {SearchHistoryItem} from "./dto/search-history-item";
 import {SearchHistoryService} from "./service/search-history.service";
-import {SearchService} from "./service/search.service";
-import {SearchResult} from "./dto/search-result";
 
 @Component({
   selector: 'app-root',
@@ -25,8 +23,6 @@ export class AppComponent implements OnInit, OnDestroy {
   hasPermissions: boolean = true;
   searchHistoryItems: SearchHistoryItem[] = [];
   searchHistorySubscription: Subscription;
-  searchResults: SearchResult[] = [];
-  query: string;
 
   constructor(
     private messageService: MessagesService,
@@ -34,8 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private userService: UserService,
     private permissionService: PermissionService,
-    private searchHistoryService: SearchHistoryService,
-    private searchService: SearchService
+    private searchHistoryService: SearchHistoryService
   ) {
 
   }
@@ -94,12 +89,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.searchHistorySubscription = this.searchHistoryService.searchHistoryItems$.subscribe({
       next: items => this.searchHistoryItems = items
     })
-  }
-
-  public async search() {
-    this.searchService.search(this.query)
-      .toPromise()
-      .then(results => this.searchResults = results);
   }
 
   showToast(): void {

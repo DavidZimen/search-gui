@@ -1,32 +1,7 @@
 <div *ngIf="hasPermissions">
   <p-toast position="top-center" styleClass="pm-move-down"></p-toast>
 
-  <span class="p-input-icon-left">
-    <i class="pi pi-search"></i>
-    <input
-      [(ngModel)]="query"
-      (keydown.enter)="search()"
-      type="text"
-      pInputText
-      placeholder="{{ 'general.search' | translate }}"
-    />
-  </span>
-
-  <p-button
-    class="saveBtn"
-    label="{{'general.yesButton' | translate }}"
-    (onClick)="showToast()">
-  </p-button>
-
-  <div *ngFor="let result of searchResults">
-    <p-card>
-      <ng-template pTemplate="header">
-        <h4>{{result.name}}</h4>
-      </ng-template>
-      <h6>{{result.resultType}}</h6>
-      <p>{{result.resultLocalId}}</p>
-    </p-card>
-  </div>
+  <router-outlet></router-outlet>
 </div>
 
 <div *ngIf="!hasPermissions">

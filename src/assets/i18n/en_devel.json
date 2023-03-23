@@ -14,6 +14,9 @@
     "noButton": "~No",
     "noPermissionForSearchHeader": "~Access denied",
     "noPermissionForSearch": "~You don't have the required permission for this app!",
-    "search:": "~Search..."
+    "search:": "~Search...",
+    "searchButton": "~Search",
+    "filter": "~Filter",
+    "filterPlaceholder": "~Choose filter criteria"
   }
 }

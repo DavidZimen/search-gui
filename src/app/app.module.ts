@@ -1,13 +1,11 @@
 import {ErrorHandler, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MessageModule} from "primeng/message";
 import {MessagesModule} from "primeng/messages";
 import {Bos30ComponentsPrimengModule} from "bos30-components-primeng";
-import {FormsModule} from "@angular/forms";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {environment} from "../environments/environment";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
@@ -17,9 +15,7 @@ import {DialogModule} from "primeng/dialog";
 import {ButtonModule} from "primeng/button";
 import {ErrorHandlerService} from "./service/error-handler.service";
 import {MessageService} from "primeng/api";
-import {InputTextModule} from "primeng/inputtext";
-import {AutoCompleteModule} from "primeng/autocomplete";
-import {CardModule} from "primeng/card";
+import {AppRoutingModule} from "./app-routing/app-routing.module";
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   let prefix = "/assets/i18n/";
@@ -40,7 +36,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MessageModule,
     MessagesModule,
     Bos30ComponentsPrimengModule,
-    FormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -51,9 +46,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ToastModule,
     DialogModule,
     ButtonModule,
-    InputTextModule,
-    AutoCompleteModule,
-    CardModule
+    AppRoutingModule
   ],
   providers: [
     {

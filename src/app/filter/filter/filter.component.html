@@ -1,0 +1,32 @@
+<p-button
+  (click)="display = true"
+  label="{{ 'general.filter' | translate }}"
+  icon="pi pi-filter"
+  iconPos="left">
+</p-button>
+
+<p-sidebar
+  position="right"
+  styleClass="pm-move-down"
+  [(visible)]="display"
+>
+  <h3>Searching filter</h3>
+
+  <p-dropdown
+    (onChange)="moveToChip($event)"
+    [options]="dropdownOptions"
+    placeholder="{{ 'general.filterPlaceholder' | translate }}">
+  </p-dropdown>
+
+  <div>
+    <span *ngFor="let chip of tableOptions">
+      <p-chip
+        [label]="chip.valueOf()"
+        styleClass="sb-chip mr-2 mb-2"
+        [removable]="true"
+        (onRemove)="moveToDropdown(chip)">
+      </p-chip>
+    </span>
+  </div>
+
+</p-sidebar>
