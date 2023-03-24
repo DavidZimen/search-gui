@@ -1,6 +1,6 @@
 <p-button
-  (click)="display = true"
-  [disabled]="buttonDisabled"
+  (onClick)="display = true"
+  [disabled]="!filterEnabled"
   label="{{ 'general.filter' | translate }}"
   icon="pi pi-filter"
   iconPos="left">
@@ -14,20 +14,36 @@
   <h3>Searching filter</h3>
 
   <p-dropdown
+    [(ngModel)]="selectedValue"
     (onChange)="moveToChip($event)"
-    [options]="dropdownOptions"
+    [options]="filterOptions"
+    [disabled]="filterOptions.length < 1"
+    appendTo="body"
     placeholder="{{ 'general.filterPlaceholder' | translate }}">
   </p-dropdown>
 
   <div>
-    <span *ngFor="let chip of tableOptions">
+    <span *ngFor="let chip of chips">
       <p-chip
-        [label]="chip.valueOf()"
-        styleClass="sb-chip mr-2 mb-2"
+        [label]="chip"
+        styleClass="sb-chip mr-2 mt-2"
         [removable]="true"
         (onRemove)="moveToDropdown(chip)">
       </p-chip>
     </span>
+  </div>
+
+  <div class="formgroup-inline mt-4 w-full flex justify-content-end">
+    <p-button (onClick)="resetAll()"
+              [disabled]="clearBtnDisabled"
+              label="{{ 'filter.deleteAll' | translate }}"
+              icon="pi pi-times"
+              class="mr-1">
+    </p-button>
+    <p-button (onClick)="applyFilter()"
+              label="{{ 'filter.apply' | translate }}"
+              icon="pi pi-check">
+    </p-button>
   </div>
 
 </p-sidebar>
