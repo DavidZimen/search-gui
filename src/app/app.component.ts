@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Message} from "primeng/api";
+import {MenuItem, Message} from "primeng/api";
 import {Subscription} from "rxjs";
 import {MessagesService} from "./service/messages.service";
 import {LanguageService} from "./service/language.service";
@@ -8,7 +8,7 @@ import {PermissionService} from "./service/permission.service";
 import {environment} from "../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
 import {SearchHistoryItem} from "./dto/search-history-item";
-import {SearchHistoryService} from "./service/search-history.service";
+
 
 @Component({
   selector: 'app-root',
@@ -21,6 +21,8 @@ export class AppComponent implements OnInit, OnDestroy {
   messages: Message[] = [];
   messageSubscription: Subscription;
   hasPermissions: boolean = true;
+  components!: MenuItem[];
+  selectedItem: MenuItem;
   searchHistoryItems: SearchHistoryItem[] = [];
   searchHistorySubscription: Subscription;
 
@@ -29,13 +31,14 @@ export class AppComponent implements OnInit, OnDestroy {
     private languageService: LanguageService,
     private translateService: TranslateService,
     private userService: UserService,
-    private permissionService: PermissionService,
-    private searchHistoryService: SearchHistoryService
+    private permissionService: PermissionService
   ) {
 
   }
 
   ngOnInit(): void {
+    this.fillTabMenu();
+
     this.permissionService.loadPermissionAssignment(this.SEARCH_GUI_READ_PERMISSIONS).subscribe(
       (result) => {
         this.hasPermissions = result.result;
@@ -49,7 +52,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.subscribeToMessageNotifications();
     this.loadLanguage();
-    this.subscribeToSearchHistory();
   }
 
   ngOnDestroy(): void {
@@ -84,11 +86,13 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  private subscribeToSearchHistory(): void {
-    this.searchHistoryService.loadSearchHistoryItems();
-    this.searchHistorySubscription = this.searchHistoryService.searchHistoryItems$.subscribe({
-      next: items => this.searchHistoryItems = items
-    })
+  fillTabMenu(): void {
+    this.components = [
+      { label: 'Search results', routerLink: 'search' },
+      { label: 'Search history', routerLink: 'search-history'}
+    ];
+
+    this.selectedItem = this.components[0];
   }
 
   showToast(): void {

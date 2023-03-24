@@ -16,6 +16,9 @@ import {ButtonModule} from "primeng/button";
 import {ErrorHandlerService} from "./service/error-handler.service";
 import {MessageService} from "primeng/api";
 import {AppRoutingModule} from "./app-routing/app-routing.module";
+import {SearchModule} from "./search/search.module";
+import {ToolbarModule} from "./toolbar/toolbar.module";
+import {TabMenuModule} from "primeng/tabmenu";
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   let prefix = "/assets/i18n/";
@@ -46,7 +49,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ToastModule,
     DialogModule,
     ButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SearchModule,
+    ToolbarModule,
+    TabMenuModule
   ],
   providers: [
     {

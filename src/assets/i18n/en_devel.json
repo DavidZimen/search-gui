@@ -18,5 +18,12 @@
     "searchButton": "~Search",
     "filter": "~Filter",
     "filterPlaceholder": "~Choose filter criteria"
+  },
+  "homepage": {
+    "moduleTitle:": "~Searching module"
+  },
+  "filter": {
+    "apply": "~Apply",
+    "deleteAll": "~Clear"
   }
 }

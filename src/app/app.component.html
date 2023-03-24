@@ -1,7 +1,14 @@
 <div *ngIf="hasPermissions">
   <p-toast position="top-center" styleClass="pm-move-down"></p-toast>
 
-  <router-outlet></router-outlet>
+  <div>
+    <app-toolbar></app-toolbar>
+  </div>
+
+  <div class="container mt-2">
+    <p-tabMenu [model]="components" [activeItem]="selectedItem"></p-tabMenu>
+    <router-outlet></router-outlet>
+  </div>
 </div>
 
 <div *ngIf="!hasPermissions">

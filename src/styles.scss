@@ -22,6 +22,20 @@ $sb-color-key-teal-16:      $sb-color-key-parking-16;
 @media only screen and (min-width: 1200px) { .container { max-width: 1140px; } }
 @media only screen and (min-width: 1400px) { .container { max-width: 1320px; } }
 
+body, html {
+  overflow-y: auto;
+  background: #f7f7f7;
+  margin: 0;
+}
+
+body { margin: 0; font-family: "Open Sans", "Helvetica Neue", sans-serif; }
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+  background: #ffffff;
+  border-color: $sb-color-key-teal;
+  color: $sb-color-key-teal;
+}
+
 .saveBtn {
   float: right;
   transform: translateY(35%);
@@ -33,4 +47,42 @@ $sb-color-key-teal-16:      $sb-color-key-parking-16;
   box-sizing: border-box;
   background: #ffffff;
   background: var(--sb-color-white);
+}
+
+div.p-toast.p-toast-top-center {
+  z-index: 10;
+}
+
+.sb-chip {
+  border-radius: 0;
+  border: 2px solid $sb-color-key-teal-32;
+  background-color: $sb-color-key-teal-16;
+  font-style: italic;
+}
+
+div.sb-chip div.p-chip-text {
+  line-height: 1.2;
+}
+
+.pm-move-down {
+  margin-top: 65px;
+}
+
+.p-toast .p-toast-message.p-toast-message-success .p-toast-message-icon {
+  color: #4fa641;
+}
+
+.p-toast .p-toast-message.p-toast-message-success .p-toast-icon-close {
+  color: #4fa641;
+}
+
+.alert_message {
+  border-left-style: solid;
+  border-right-style: solid;
+  border-color: $sb-color-key-teal;
+  border-width: 4px;
+}
+
+.greyBackground {
+  background: #f7f7f7;
 }
