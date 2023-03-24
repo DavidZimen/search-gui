@@ -1,5 +1,5 @@
 <div class="table-wrapper">
-  <p-table [value]="searchResults">
+  <p-table [value]="searchResults | filterResults: filter">
     <ng-template pTemplate="header">
       <tr>
         <th>Result</th>

@@ -1,33 +1,14 @@
-<div class="container">
-  <div class="grid">
-
-    <div class="col">
-      <div class="p-inputgroup sm:w-full md:max-w-30rem">
-        <input
-          type="text"
-          pInputText
-          [(ngModel)]="query"
-          (keydown.enter)="search()"
-          placeholder="{{ 'general.search' | translate }}"
-        />
-        <button
-          pButton
-          type="button"
-          icon="pi pi-search">
-        </button>
-      </div>
-    </div>
-
-    <div class="col col-2">
-      <div class="flex justify-content-end">
-        <app-filter
-          [buttonDisabled]="!filterEnabled"
-          [filterOptions]="resultTypes">
-        </app-filter>
-      </div>
-    </div>
-
-  </div>
-
-  <app-search-results [searchResults]="searchResults"></app-search-results>
+<div class="p-inputgroup">
+  <input
+    class="md:w-20rem lg:w-30rem"
+    type="text"
+    pInputText
+    [(ngModel)]="query"
+    (keydown.enter)="search()"
+    placeholder="{{ 'general.search' | translate }}"
+  />
+  <p-button
+    icon="pi pi-search"
+    (onClick)="search()">
+  </p-button>
 </div>

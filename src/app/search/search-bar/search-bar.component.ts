@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {SearchResult} from "../../dto/search-result";
 import {SearchService} from "../../service/search.service";
 
 @Component({
@@ -9,10 +8,8 @@ import {SearchService} from "../../service/search.service";
 })
 export class SearchBarComponent implements OnInit {
 
-  searchResults: SearchResult[] = [];
   query: string;
-  resultTypes: string[] = [];
-  filterEnabled: boolean = false;
+  lastQuery: string;
 
   constructor(
     private searchService: SearchService
@@ -23,26 +20,20 @@ export class SearchBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public async search() {
-    this.searchService.search(this.query)
-      .toPromise()
-      .then(results => {
-        this.searchResults = results;
-        const resultTypesSet = new Set<string>(results.map(res => res.resultType));
-
-        if (resultTypesSet.size > 1) {
-          this.enableFilter(true, resultTypesSet);
-        }
-      });
-  }
-
-  private enableFilter(enable: boolean, resultTypesSet?: Set<string>): void {
-    if (enable) {
-      this.resultTypes = Array.from(resultTypesSet!);
-      this.filterEnabled = true;
-    } else {
-      this.filterEnabled = false;
+  search(): void {
+    // if null or undefined return
+    if (!this.query) {
+      return;
     }
+
+    // if nothing changed dont do anything
+    if (this.query === this.lastQuery) {
+      return;
+    }
+
+    this.searchService.query.next(this.query);
+    this.lastQuery = this.query;
+
   }
 
 }

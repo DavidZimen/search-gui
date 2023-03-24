@@ -9,13 +9,15 @@ import {ButtonModule} from "primeng/button";
 import {CardModule} from "primeng/card";
 import {FilterModule} from "../filter/filter.module";
 import {TableModule} from "primeng/table";
+import { SearchHistoryComponent } from './search-history/search-history.component';
 
 
 
 @NgModule({
   declarations: [
     SearchBarComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    SearchHistoryComponent
   ],
   imports: [
     CommonModule,

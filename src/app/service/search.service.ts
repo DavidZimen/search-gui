@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {SearchResult} from "../dto/search-result";
 
 @Injectable({
@@ -9,6 +9,9 @@ import {SearchResult} from "../dto/search-result";
 export class SearchService {
 
   private searchUrl: string = 'search';
+
+  query: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+
   constructor(
     private http: HttpClient
   ) { }
