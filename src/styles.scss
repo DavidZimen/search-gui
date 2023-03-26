@@ -23,7 +23,7 @@ $sb-color-key-teal-16:      $sb-color-key-parking-16;
 @media only screen and (min-width: 1400px) { .container { max-width: 1320px; } }
 
 body, html {
-  overflow-y: auto;
+  overflow: initial;
   background: #f7f7f7;
   margin: 0;
 }
@@ -36,6 +36,22 @@ body { margin: 0; font-family: "Open Sans", "Helvetica Neue", sans-serif; }
   color: $sb-color-key-teal;
 }
 
+.tab-menu-item {
+  width: calc(100vw / 2);
+  text-align: center;
+}
+
+.tool-bar {
+  width: 100%;
+  height: 4rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  background: #ffffff;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .saveBtn {
   float: right;
   transform: translateY(35%);
@@ -43,7 +59,8 @@ body { margin: 0; font-family: "Open Sans", "Helvetica Neue", sans-serif; }
 
 .table-wrapper {
   height: 100%;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   box-sizing: border-box;
   background: #ffffff;
   background: var(--sb-color-white);

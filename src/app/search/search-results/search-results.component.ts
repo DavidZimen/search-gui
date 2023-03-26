@@ -12,7 +12,7 @@ import {Filter} from "../../filter/filter";
 })
 export class SearchResultsComponent implements OnInit, OnDestroy {
 
-  searchResults: SearchResult[];
+  searchResults: SearchResult[] = [];
   filter: Filter = new Filter([]);
   querySubscription: Subscription;
   filterSubscription: Subscription;
@@ -54,6 +54,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     this.searchService.search(query)
       .toPromise()
       .then(results => {
+        console.log(results.length);
         this.searchResults = results;
         const resultTypesSet = new Set<string>(results.map(res => res.resultType));
 

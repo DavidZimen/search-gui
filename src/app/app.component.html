@@ -1,12 +1,18 @@
 <div *ngIf="hasPermissions">
   <p-toast position="top-center" styleClass="pm-move-down"></p-toast>
 
-  <div>
-    <app-toolbar></app-toolbar>
-  </div>
+  <app-toolbar></app-toolbar>
+
+  <p-tabMenu
+    class="shadow-2 bg-white"
+    [model]="components"
+    [activeItem]="selectedItem">
+    <ng-template pTemplate="item" let-item>
+      <li class="tab-menu-item">{{item.label}}</li>
+    </ng-template>
+  </p-tabMenu>
 
   <div class="container mt-2">
-    <p-tabMenu [model]="components" [activeItem]="selectedItem"></p-tabMenu>
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <p-button
   (onClick)="display = true"
   [disabled]="!filterEnabled"
-  label="{{ 'general.filter' | translate }}"
+  label="{{ 'filter.filterButton' | translate }}"
   icon="pi pi-filter"
   iconPos="left">
 </p-button>
@@ -19,7 +19,7 @@
     [options]="filterOptions"
     [disabled]="filterOptions.length < 1"
     appendTo="body"
-    placeholder="{{ 'general.filterPlaceholder' | translate }}">
+    placeholder="{{ 'filter.filterPlaceholder' | translate }}">
   </p-dropdown>
 
   <div>

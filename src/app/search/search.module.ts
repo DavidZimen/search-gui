@@ -10,6 +10,7 @@ import {CardModule} from "primeng/card";
 import {FilterModule} from "../filter/filter.module";
 import {TableModule} from "primeng/table";
 import { SearchHistoryComponent } from './search-history/search-history.component';
+import {ErrorPagesModule} from "../error-pages/error-pages.module";
 
 
 
@@ -19,16 +20,17 @@ import { SearchHistoryComponent } from './search-history/search-history.componen
     SearchResultsComponent,
     SearchHistoryComponent
   ],
-  imports: [
-    CommonModule,
-    InputTextModule,
-    FormsModule,
-    TranslateModule,
-    ButtonModule,
-    CardModule,
-    FilterModule,
-    TableModule
-  ],
+    imports: [
+        CommonModule,
+        InputTextModule,
+        FormsModule,
+        TranslateModule,
+        ButtonModule,
+        CardModule,
+        FilterModule,
+        TableModule,
+        ErrorPagesModule
+    ],
   exports: [
     SearchBarComponent,
     SearchResultsComponent

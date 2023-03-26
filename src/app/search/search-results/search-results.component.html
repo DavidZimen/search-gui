@@ -1,19 +1,27 @@
-<div class="table-wrapper">
-  <p-table [value]="searchResults | filterResults: filter">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Result</th>
-        <th>Result Type</th>
-        <th>Result local Id</th>
-      </tr>
-    </ng-template>
+<div *ngIf="searchResults.length > 0; then results else nothingFound"></div>
 
-    <ng-template pTemplate="body" let-searchResult>
-      <tr>
-        <th>{{searchResult.name}}</th>
-        <th>{{searchResult.resultType}}</th>
-        <th>{{searchResult.resultLocalId}}</th>
-      </tr>
-    </ng-template>
-  </p-table>
-</div>
+<ng-template #results>
+  <div class="table-wrapper">
+    <p-table [value]="searchResults | filterResults: filter">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="col col-5">Result</th>
+          <th class="col col-5">Result Type</th>
+          <th class="col col-2">Result local Id</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-searchResult>
+        <tr>
+          <th class="col col-5">{{searchResult.name}}</th>
+          <th class="col col-5">{{searchResult.resultType}}</th>
+          <th class="col col-2">{{searchResult.resultLocalId}}</th>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</ng-template>
+
+<ng-template #nothingFound>
+  <app-no-serch-results-found></app-no-serch-results-found>
+</ng-template>

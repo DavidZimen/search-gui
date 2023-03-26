@@ -27,20 +27,20 @@ export class LanguageService {
     return [this.languageEN, this.languageDE];
   }
 
-  selectLanguage(selectedLanguage: Language) {
+  async selectLanguage(selectedLanguage: Language) {
     this._selectedLanguage = selectedLanguage;
 
     if(selectedLanguage === this.languageEN) {
-      this.translateService.use(this.EN_GB);
+      await this.translateService.use(this.EN_GB).toPromise();
     } else if(selectedLanguage === this.languageDE) {
-      this.translateService.use(this.DE_DE);
+      await this.translateService.use(this.DE_DE).toPromise();
     } else {
       console.log("Unknown language: " + selectedLanguage.language + "-" + selectedLanguage.country);
     }
 
-    this.translateService.get('primeng').subscribe(res =>
-      this.config.setTranslation(res));
-
+    this.translateService.get('primeng').subscribe(res => {
+      this.config.setTranslation(res);
+    });
   }
 
   get selectedLanguage(): Language {
