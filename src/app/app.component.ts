@@ -5,7 +5,6 @@ import {MessagesService} from "./service/messages.service";
 import {LanguageService} from "./service/language.service";
 import {UserService} from "./service/user.service";
 import {PermissionService} from "./service/permission.service";
-import {environment} from "../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
 import {SearchHistoryItem} from "./dto/search-history-item";
 
@@ -37,8 +36,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.fillTabMenu();
-
     this.permissionService.loadPermissionAssignment(this.SEARCH_GUI_READ_PERMISSIONS).subscribe(
       (result) => {
         this.hasPermissions = result.result;
@@ -47,11 +44,8 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.translateService.addLangs([this.languageService.EN_GB, this.languageService.DE_DE]);
-    this.translateService.setDefaultLang(this.languageService.EN_DEVEL);   // when key does not exist in the used language
-
     this.subscribeToMessageNotifications();
-    this.loadLanguage();
+    this.fillTabMenu();
   }
 
   ngOnDestroy(): void {
@@ -70,26 +64,10 @@ export class AppComponent implements OnInit, OnDestroy {
       });
   }
 
-  private loadLanguage(): void {
-    let userLang = this.userService.locale;
-
-    if (environment.production) {
-      if (userLang.startsWith("de")) {
-        this.translateService.use(this.languageService.DE_DE);
-        this.languageService.selectLanguage(this.languageService.languageDE);
-      } else {
-        this.translateService.use(this.languageService.EN_GB);
-        this.languageService.selectLanguage(this.languageService.languageEN);
-      }
-    } else {
-      this.translateService.use(this.languageService.EN_GB);
-    }
-  }
-
   fillTabMenu(): void {
     this.components = [
-      { label: 'Search results', routerLink: 'search' },
-      { label: 'Search history', routerLink: 'search-history'}
+      { label: this.translateService.instant('search.searchResultsTab'), routerLink: 'search' },
+      { label: this.translateService.instant('search.searchHistoryTab'), routerLink: 'search-history'}
     ];
 
     this.selectedItem = this.components[0];

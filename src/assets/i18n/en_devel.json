@@ -13,17 +13,17 @@
     "yesButton": "~Yes",
     "noButton": "~No",
     "noPermissionForSearchHeader": "~Access denied",
-    "noPermissionForSearch": "~You don't have the required permission for this app!",
-    "search:": "~Search...",
-    "searchButton": "~Search",
-    "filter": "~Filter",
-    "filterPlaceholder": "~Choose filter criteria"
-  },
-  "homepage": {
-    "moduleTitle:": "~Searching module"
+    "noPermissionForSearch": "~You don't have the required permission for this app!"
   },
   "filter": {
     "apply": "~Apply",
-    "deleteAll": "~Clear"
+    "deleteAll": "~Clear",
+    "filterButton": "~Filter",
+    "filterPlaceholder": "~Choose filter criteria"
+  },
+  "search": {
+    "searchBarPlaceholder": "~Search...",
+    "searchHistoryTab": "~Search history",
+    "searchResultsTab": "~Search results"
   }
 }

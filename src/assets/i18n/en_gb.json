@@ -13,5 +13,8 @@
     "unexpectedRestError": "Unexpected REST error. Please try again later.",
     "yesButton": "Yes",
     "noButton": "No"
+  },
+  "homepage": {
+    "moduleTitle:": "Searching module"
   }
 }
